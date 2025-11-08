@@ -1,5 +1,11 @@
 package arbol;
 
+/*
+   Este será la clase en donde almacenará cada módulo y lección para el árbol binario,
+   se usará un nodo genérico para que permita crear nodos de distintas clases para
+   evitar problemas respecto a tipos de datos.
+*/
+
 public class Nodo<T> {
     private T dato;
     private Nodo<T> nodoIzquierdo;
