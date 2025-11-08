@@ -1,5 +1,11 @@
 package clases;
 
+/*
+   Esta clase será la siguiente a la clase curso, un curso tiene distintos módulos,
+   por lo cual serán los siguientes a ser introducidos. Si no hay un nodo de tipo "Curso",
+   no se podrá introducir.
+*/
+
 public class Modulo {
     private String titulo, descripcion, idModulo;
     private double duracionHoras;

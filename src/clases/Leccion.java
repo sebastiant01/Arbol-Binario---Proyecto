@@ -1,5 +1,11 @@
 package clases;
 
+/*
+  La última clase en ser introducida será la clase "Leccion",
+  cada módulo tiene distintas lecciones, por lo cual será la última a ser introducida,
+  si no hay un nodo de tipo "Modulo" que la preceda, no se podrá introducir.
+*/
+
 public class Leccion {
     private String titulo, descripcion;
     private boolean completado;
