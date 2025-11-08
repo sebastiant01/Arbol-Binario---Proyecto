@@ -7,16 +7,14 @@ package clases;
 */
 
 public class Modulo {
-    private String titulo, descripcion, idModulo;
+    private String titulo, descripcion;
     private double duracionHoras;
-    private int numeroModulo;
+    private int ID;
     
-    public Modulo(String titulo, String descripcion, String idModulo, double duracionHoras, int numeroModulo) {
+    public Modulo(String titulo, String descripcion, double duracionHoras) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.idModulo = idModulo;
         this.duracionHoras = duracionHoras;
-        this.numeroModulo = numeroModulo;
     }
 
     public String getTitulo() {
@@ -35,14 +33,6 @@ public class Modulo {
         this.descripcion = descripcion;
     }
 
-    public String getIdModulo() {
-        return idModulo;
-    }
-
-    public void setIdModulo(String idModulo) {
-        this.idModulo = idModulo;
-    }
-
     public double getDuracionHoras() {
         return duracionHoras;
     }
@@ -51,11 +41,11 @@ public class Modulo {
         this.duracionHoras = duracionHoras;
     }
 
-    public int getNumeroModulo() {
-        return numeroModulo;
+    public int getID() {
+        return ID;
     }
 
-    public void setNumeroModulo(int numeroModulo) {
-        this.numeroModulo = numeroModulo;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

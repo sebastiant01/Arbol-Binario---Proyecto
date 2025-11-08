@@ -1,22 +1,20 @@
 package clases;
 
 /*
-  La última clase en ser introducida será la clase "Leccion",
-  cada módulo tiene distintas lecciones, por lo cual será la última a ser introducida,
-  si no hay un nodo de tipo "Modulo" que la preceda, no se podrá introducir.
+  Este será la clase la cual será la raíz del árbol binario,
+  porque es donde se desglosarán las otras dos clases, o sea,
+  los módulos y lecciones.
 */
 
-public class Leccion {
+public class Curso {
     private String titulo, descripcion;
-    private boolean completado;
     private int ID;
     
-    public Leccion(String titulo, String descripcion) {
+    public Curso(String titulo, String descripcion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.completado = false;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }
@@ -31,14 +29,6 @@ public class Leccion {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public boolean isCompletado() {
-        return completado;
-    }
-
-    public void setCompletado(boolean completado) {
-        this.completado = completado;
     }
 
     public int getID() {
