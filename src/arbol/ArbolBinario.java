@@ -11,8 +11,6 @@ import clases.Curso;
 
 public class ArbolBinario {
     private Nodo<Curso> raiz;
-    private int tamanioArbol = 0;
-    private int contadorID = 1;
     
     public ArbolBinario() {
     }
@@ -22,8 +20,6 @@ public class ArbolBinario {
             Curso nuevoCurso = new Curso(titulo, descripcion);
             
             this.raiz = new Nodo<>(nuevoCurso);
-            this.raiz.getDato().setID(contadorID);
-            this.contadorID++;
         } else {
             System.out.println("Ya hay un curso creado. No se puede añadir un curso dentro de otro curso.");
         }

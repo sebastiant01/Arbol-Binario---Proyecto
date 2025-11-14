@@ -9,7 +9,6 @@ package clases;
 public class Modulo {
     private String titulo, descripcion;
     private double duracionHoras;
-    private int ID;
     
     public Modulo(String titulo, String descripcion, double duracionHoras) {
         this.titulo = titulo;
@@ -39,13 +38,5 @@ public class Modulo {
 
     public void setDuracionHoras(double duracionHoras) {
         this.duracionHoras = duracionHoras;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 }

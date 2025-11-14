@@ -9,7 +9,6 @@ package clases;
 public class Leccion {
     private String titulo, descripcion;
     private boolean completado;
-    private int ID;
     
     public Leccion(String titulo, String descripcion) {
         this.titulo = titulo;
@@ -39,13 +38,5 @@ public class Leccion {
 
     public void setCompletado(boolean completado) {
         this.completado = completado;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 }

@@ -8,7 +8,6 @@ package clases;
 
 public class Curso {
     private String titulo, descripcion;
-    private int ID;
     
     public Curso(String titulo, String descripcion) {
         this.titulo = titulo;
@@ -29,13 +28,5 @@ public class Curso {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 }
