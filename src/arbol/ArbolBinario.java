@@ -7,7 +7,6 @@ package arbol;
    un elemento, buscar un elemento, etc.
 */
 
-import java.util.ArrayList;
 import clases.*;
 
 public class ArbolBinario<T> {
@@ -27,6 +26,11 @@ public class ArbolBinario<T> {
     }
     
     public void insertarModulo(T modulo) {
+        if (this.raiz == null) {
+            System.out.println("Es necesario añadir un curso primero para añadir módulos.");
+            return;
+        }
+        
         if (this.raiz.getNodoIzquierdo() != null && this.raiz.getNodoDerecho() != null) {
             System.out.println("No se pueden añadir más módulos.");
             return;
@@ -38,6 +42,49 @@ public class ArbolBinario<T> {
             this.raiz.setNodoIzquierdo(nuevoModulo);
         } else {
             this.raiz.setNodoDerecho(nuevoModulo);
+        }
+    }
+    
+    public void insertarLeccion(T leccion) {
+        Nodo<T> moduloIzquierdo = this.raiz.getNodoIzquierdo();
+        Nodo<T> moduloDerecho = this.raiz.getNodoDerecho();
+
+        if (this.raiz == null) {
+            System.out.println("Es necesario que exista un curso primero para añadir lecciones.");
+            return;
+        }
+
+        if (moduloIzquierdo == null && moduloDerecho == null) {
+            System.out.println("No se pueden añadir lecciones. Es necesario añadir módulos.");
+            return;
+        }
+
+        Nodo<T> nuevaLeccion = new Nodo<>(leccion);
+
+        /* Primero nos dirigimos al subárbol izquierdo, y verificamos si
+           alguno de los dos nodos está vacío, de ser así, añadimos la nueva 
+           lección                                                           */
+        if (moduloIzquierdo != null) {
+            if (moduloIzquierdo.getNodoIzquierdo() == null) {
+                moduloIzquierdo.setNodoIzquierdo(nuevaLeccion);
+                return;
+            } else if (moduloIzquierdo.getNodoDerecho() == null) {
+                moduloIzquierdo.setNodoDerecho(nuevaLeccion);
+                return;
+            }
+        }
+
+        // Si el hijo izquierdo de la raíz principal tiene dos hijos, entonces
+        // pasamos al subárbol derecho
+        // Hacemos lo mismo que lo anterior.
+        if (moduloDerecho != null) {
+            if (moduloDerecho.getNodoIzquierdo() == null) {
+                moduloDerecho.setNodoIzquierdo(nuevaLeccion);
+            } else if (moduloDerecho.getNodoDerecho() == null) {
+                moduloDerecho.setNodoDerecho(nuevaLeccion);
+            } else {
+                System.out.println("No se pueden añadir más lecciones.");
+            }
         }
     }
 }
