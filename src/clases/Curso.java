@@ -7,11 +7,13 @@ package clases;
 */
 
 public class Curso {
-    private String titulo, descripcion;
+    private String titulo, descripcion, categoria, nivel;
     
-    public Curso(String titulo, String descripcion) {
+    public Curso(String titulo, String descripcion, String categoria, String nivel) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.nivel = nivel;
     }
 
     public String getTitulo() {
@@ -28,5 +30,21 @@ public class Curso {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 }

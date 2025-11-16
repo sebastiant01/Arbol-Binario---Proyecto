@@ -9,11 +9,13 @@ package clases;
 public class Modulo {
     private String titulo, descripcion;
     private double duracionHoras;
+    private int cantidadLecciones;
     
     public Modulo(String titulo, String descripcion, double duracionHoras) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.duracionHoras = duracionHoras;
+        this.cantidadLecciones = 0;
     }
 
     public String getTitulo() {
@@ -38,5 +40,13 @@ public class Modulo {
 
     public void setDuracionHoras(double duracionHoras) {
         this.duracionHoras = duracionHoras;
+    }
+
+    public int getCantidadLecciones() {
+        return cantidadLecciones;
+    }
+
+    public void setCantidadLecciones(int cantidadLecciones) {
+        this.cantidadLecciones = cantidadLecciones;
     }
 }
