@@ -67,9 +67,13 @@ public class ArbolBinario<T> {
         if (moduloIzquierdo != null) {
             if (moduloIzquierdo.getNodoIzquierdo() == null) {
                 moduloIzquierdo.setNodoIzquierdo(nuevaLeccion);
+                
+                ((Modulo) moduloIzquierdo.getDato()).incrementarLecciones();
                 return;
             } else if (moduloIzquierdo.getNodoDerecho() == null) {
                 moduloIzquierdo.setNodoDerecho(nuevaLeccion);
+                
+                ((Modulo) moduloIzquierdo.getDato()).incrementarLecciones();
                 return;
             }
         }
@@ -80,8 +84,12 @@ public class ArbolBinario<T> {
         if (moduloDerecho != null) {
             if (moduloDerecho.getNodoIzquierdo() == null) {
                 moduloDerecho.setNodoIzquierdo(nuevaLeccion);
+                
+                ((Modulo) moduloDerecho.getDato()).incrementarLecciones();
             } else if (moduloDerecho.getNodoDerecho() == null) {
                 moduloDerecho.setNodoDerecho(nuevaLeccion);
+                
+                ((Modulo) moduloDerecho.getDato()).incrementarLecciones();
             } else {
                 System.out.println("No se pueden añadir más lecciones.");
             }
@@ -97,54 +105,62 @@ public class ArbolBinario<T> {
         metodoRecursivoMostrar(this.raiz, "", true);
     }
     
-    public void metodoRecursivoMostrar(Nodo<T> nodo, String prefijo, boolean esUltimo) {
+    private void metodoRecursivoMostrar(Nodo<T> nodo, String prefijo, boolean esUltimo) {
         // Se verifica si el nodo (o hijo) está vacío, de ser así, acaba el proceso.
         if (nodo == null) {
             return;
         }
-        
-        System.out.println(prefijo);
-        
+
+        // Imprimir prefijo ya construido
+        System.out.print(prefijo);
+
         // Imprime el primer ícono según si es el último nodo que queda.
         if (esUltimo) {
             System.out.print("└── ");
         } else {
-            System.out.println("├── ");
+            System.out.print("├── ");
         }
-        
+
         // Se necesita identificar a qué clase pertenece el nodo, y se imprimirá
         // sus respectivos datos dependiendo de qué clase sea.
         if (nodo.getDato() instanceof Curso curso) {
-            System.out.println(curso.getTitulo() + " | " + curso.getDescripcion() + " | " + curso.getCategoria() + " | " + curso.getNivel());
+            System.out.println(curso.getTitulo() + " | " + curso.getDescripcion() + " | "
+                    + curso.getCategoria() + " | " + curso.getNivel());
+
         } else if (nodo.getDato() instanceof Modulo modulo) {
-            System.out.println(modulo.getTitulo() + " | " + modulo.getDescripcion() + " | " + "Duración: " + modulo.getDuracionHoras() + " horas" 
-                    + " | " + "Cantidad lecciones: " + modulo.getCantidadLecciones());
-        } else if (nodo.getDato() instanceof  Leccion leccion) {
+            System.out.println(modulo.getTitulo() + " | " + modulo.getDescripcion()
+                    + " | Duración: " + modulo.getDuracionHoras() + " hora(s) | Cantidad lecciones: "
+                    + modulo.getCantidadLecciones());
+
+        } else if (nodo.getDato() instanceof Leccion leccion) {
             System.out.println(leccion.getTitulo() + " | " + leccion.getDescripcion());
         }
-        
+
         String nuevoPrefijo;
-        
         if (esUltimo) {
-            nuevoPrefijo = prefijo + "    ";
+            nuevoPrefijo = prefijo + "    ";  
         } else {
-            nuevoPrefijo = prefijo + "|   ";
+            nuevoPrefijo = prefijo + "│   ";   
         }
-        
-        Nodo<T> nodoIzquierdo = nodo.getNodoIzquierdo();
-        Nodo<T> nodoDerecho = nodo.getNodoDerecho();
-        
-        boolean existeIzquierdo = nodoIzquierdo != null;
-        boolean existeDerecho = nodoDerecho != null;
-        
+
+        Nodo<T> hijoIzq = nodo.getNodoIzquierdo();
+        Nodo<T> hijoDer = nodo.getNodoDerecho();
+
+        boolean existeIzq = hijoIzq != null;
+        boolean existeDer = hijoDer != null;
+
         // Si existe el nodo/hijo izquierdo, dependiendo de si existe o no el nodo derecho:
         // o no será el último, o sí será el último nodo que se va a imprimir.
-        if (existeIzquierdo) {
-            metodoRecursivoMostrar(nodoIzquierdo, nuevoPrefijo, !existeDerecho);
-        } 
+        if (existeIzq) {
+            if (existeDer) {
+                metodoRecursivoMostrar(hijoIzq, nuevoPrefijo, false);
+            } else {
+                metodoRecursivoMostrar(hijoIzq, nuevoPrefijo, true);
+            }
+        }
         // Si sí existe el derecho, claramente será el último nodo a imprimir.
-        if (existeDerecho) {
-            metodoRecursivoMostrar(nodoDerecho, nuevoPrefijo, true);
+        if (existeDer) {
+            metodoRecursivoMostrar(hijoDer, nuevoPrefijo, true);
         }
     }
 }

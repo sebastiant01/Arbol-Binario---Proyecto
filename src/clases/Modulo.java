@@ -46,7 +46,7 @@ public class Modulo {
         return cantidadLecciones;
     }
 
-    public void setCantidadLecciones(int cantidadLecciones) {
-        this.cantidadLecciones = cantidadLecciones;
+    public void incrementarLecciones() {
+        this.cantidadLecciones++;
     }
 }
