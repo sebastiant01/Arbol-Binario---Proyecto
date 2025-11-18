@@ -3,8 +3,8 @@ package arbol;
 /*
    Este será la clase en donde se almacenará y creará el curso virtual, manteniendo
    la estructura de un árbol binario. También estarán los métodos que permitirán
-   las operaciones básicas de un árbol binario, como: insertar elementos, eliminar
-   un elemento, buscar un elemento, etc.
+   las operaciones básicas de un árbol binario, como: insertar elementos y mostrar
+   el curso.
 */
 
 import clases.*;
@@ -14,7 +14,7 @@ public class ArbolBinario<T> {
     
     public ArbolBinario() {
     }
-    
+
     public void insertarCurso(T curso) {
         if (this.raiz == null) {
             Nodo<T> nuevoCurso = new Nodo<>(curso);
