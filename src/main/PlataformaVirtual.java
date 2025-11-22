@@ -10,7 +10,9 @@ public class PlataformaVirtual {
     
     public static void main(String[] args) {
         System.out.println("Bienvenido a la plataforma virtual.");
-        System.out.println("Aquí puedes añadir y eliminar cursos, asimismo se puede añadir módulos y lecciones.");
+        System.out.println("En este programa vas a poder interactuar con el sistema de cursos.");
+        System.out.println("Aquí puedes añadir un curso, asimismo se puede añadir módulos y lecciones.");
+        System.out.println("Nota: Tenga en cuenta de que sólo podrá crear un solo curso, debido a limitaciones técnicas.");
         
         int opcion;
         
@@ -37,9 +39,9 @@ public class PlataformaVirtual {
                     insertarLeccion();
                     break;
                 case 4:
-                    System.out.println("----------------------------------------------------------");
+                    System.out.println("---------------------------------------------------------------------");
                     arbol.mostrarArbol();
-                    System.out.println("----------------------------------------------------------");
+                    System.out.println("---------------------------------------------------------------------");
                     break;
             }
         } while (opcion != 0);
@@ -57,7 +59,11 @@ public class PlataformaVirtual {
         String nivelCurso = sc.nextLine();
 
         Curso nuevoCurso = new Curso(tituloCurso, descripcionCurso, categoriaCurso, nivelCurso);
-        System.out.println("\nNuevo curso añadido.");
+        
+        if (arbol.getRaiz() == null) {
+           System.out.println("\nNuevo curso añadido.");
+        }
+
         arbol.insertarCurso(nuevoCurso);
     }
     
@@ -68,10 +74,21 @@ public class PlataformaVirtual {
         System.out.print("Introduce una descripción corta para el módulo: ");
         String descripcionModulo = sc.nextLine();
         System.out.print("Introduce la duración en horas de este módulo: ");
-        double duracionHoras = sc.nextDouble();
+        
+        double duracionHoras;
+        try {
+            duracionHoras = sc.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Debes de ingresar un número válido.");
+            return;
+        }
         
         Modulo nuevoModulo = new Modulo(tituloModulo, descripcionModulo, duracionHoras);
-        System.out.println("\nNuevo módulo añadido.");
+        
+        if (arbol.getRaiz().getNodoIzquierdo() == null || arbol.getRaiz().getNodoDerecho() == null) {
+            System.out.println("\nNuevo módulo añadido.");
+        }
+        
         arbol.insertarModulo(nuevoModulo);
     }
     

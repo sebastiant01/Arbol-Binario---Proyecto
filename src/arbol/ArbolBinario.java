@@ -163,4 +163,8 @@ public class ArbolBinario<T> {
             metodoRecursivoMostrar(hijoDer, nuevoPrefijo, true);
         }
     }
+
+    public Nodo<T> getRaiz() {
+        return raiz;
+    }
 }
