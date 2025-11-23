@@ -2,6 +2,7 @@ package main;
 
 import clases.*;
 import arbol.ArbolBinario;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PlataformaVirtual {
@@ -59,15 +60,16 @@ public class PlataformaVirtual {
         String nivelCurso = sc.nextLine();
 
         Curso nuevoCurso = new Curso(tituloCurso, descripcionCurso, categoriaCurso, nivelCurso);
-        
-        if (arbol.getRaiz() == null) {
-           System.out.println("\nNuevo curso añadido.");
-        }
 
         arbol.insertarCurso(nuevoCurso);
     }
     
     private static void insertarModulo() {
+        if (arbol.getRaiz() == null) {
+            System.out.println("Es necesario añadir un curso para añadir un módulo.");
+            return;
+        }
+        
         System.out.print("\nIntroduce el título para el nuevo módulo: ");
         sc.nextLine();
         String tituloModulo = sc.nextLine();
@@ -78,21 +80,23 @@ public class PlataformaVirtual {
         double duracionHoras;
         try {
             duracionHoras = sc.nextDouble();
-        } catch (Exception e) {
+        } catch (InputMismatchException e) {
             System.out.println("Debes de ingresar un número válido.");
+            sc.nextLine();
             return;
         }
         
         Modulo nuevoModulo = new Modulo(tituloModulo, descripcionModulo, duracionHoras);
         
-        if (arbol.getRaiz().getNodoIzquierdo() == null || arbol.getRaiz().getNodoDerecho() == null) {
-            System.out.println("\nNuevo módulo añadido.");
-        }
-        
         arbol.insertarModulo(nuevoModulo);
     }
     
     private static void insertarLeccion() {
+        if (arbol.getRaiz() == null) {
+            System.out.println("Es necesario añadir un curso para añadir lecciones.");
+            return;
+        }
+        
         System.out.print("\nIntroduce el título para esta lección: ");
         sc.nextLine();
         String tituloLeccion = sc.nextLine();
@@ -100,7 +104,6 @@ public class PlataformaVirtual {
         String descripcionLeccion = sc.nextLine();
         
         Leccion nuevaLeccion = new Leccion(tituloLeccion, descripcionLeccion);
-        System.out.println("\nNueva lección añadida.");
         arbol.insertarLeccion(nuevaLeccion);
     }
 }

@@ -20,17 +20,13 @@ public class ArbolBinario<T> {
             Nodo<T> nuevoCurso = new Nodo<>(curso);
             
             this.raiz = nuevoCurso;
+            System.out.println("\nNuevo curso añadido.");
         } else {
             System.out.println("Ya hay un curso creado. No se puede añadir un curso dentro de otro curso.");
         }
     }
     
     public void insertarModulo(T modulo) {
-        if (this.raiz == null) {
-            System.out.println("Es necesario añadir un curso primero para añadir módulos.");
-            return;
-        }
-        
         if (this.raiz.getNodoIzquierdo() != null && this.raiz.getNodoDerecho() != null) {
             System.out.println("No se pueden añadir más módulos.");
             return;
@@ -43,6 +39,8 @@ public class ArbolBinario<T> {
         } else {
             this.raiz.setNodoDerecho(nuevoModulo);
         }
+        
+        System.out.println("\nNuevo módulo añadido.");
     }
     
     public void insertarLeccion(T leccion) {
@@ -94,6 +92,8 @@ public class ArbolBinario<T> {
                 System.out.println("No se pueden añadir más lecciones.");
             }
         }
+        
+        System.out.println("\nNueva lección añadida.");
     }
     
     public void mostrarArbol() {
